@@ -4,118 +4,185 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CST9102"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="GVEDIT"
         MinHeight="550"
         MinWidth="1000"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1"
+                                 EndPoint="1,0">
+                <GradientStop Color="AliceBlue"
+                              Offset="0" />
+                <GradientStop Color="SkyBlue"
+                              Offset="0.33" />
+                <GradientStop Color="SkyBlue"
+                              Offset="0.66" />
+                <GradientStop Color="Blue"
+                              Offset="1" />
+            </LinearGradientBrush>
+        </Border.Background>
 
-        <!--#region Menu -->
-        <Grid x:Name="StandardMenu"
-              Grid.Row="0"
-              Background="#F0F0F0">
-            <Menu VerticalAlignment="Center"
-                  FontSize="30">
-                <MenuItem Header="File">
-                    <MenuItem Header="New File" />
-                    <MenuItem Header="Open File" />
-                    <MenuItem Header="Save File" />
-                </MenuItem>
-                <MenuItem Header="Export">
-                    <MenuItem Header="Export File" />
-                    <MenuItem Header="Export As Images" />
-                </MenuItem>
-            </Menu>
-        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
 
-        <Grid  x:Name="GraphStyleMenu"
-               Grid.Row="1"
-               Background="#F0F0F0">
-            <Menu VerticalAlignment="Center"
-                  FontSize="30">
-                <MenuItem>
-                    <MenuItem.Icon>
-                        <Image Source="Assets/copilot.png"
-                               Width="50"
-                               Height="50"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center" />
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="idk" />
-                <MenuItem Header="idk" />
-                <MenuItem Header="idk" />
-                <MenuItem Header="idk" />
-                <MenuItem Header="idk" />
-                <MenuItem Header="idk" />
-                <MenuItem Header="idk" />
-            </Menu>
-        </Grid>
-        <!--#endregion-->
+            <!--#region StandardMenu -->
+            <Border Grid.Row="0"
+                    BorderBrush="#1E4B7A"
+                    BorderThickness="0,0,0,1">
+                <Menu x:Name="StandardMenu"
+                      ItemContainerStyle="{StaticResource StandardMenuItem}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:IconImage Icon="FolderClosed"
+                                              Style="{StaticResource icon}" />
+                                <TextBlock Text="文件" />
+                            </StackPanel>
+                        </MenuItem.Header>
+                        <MenuItem Header="新建文件"  />
+                        <MenuItem Header="打开文件" />
+                        <MenuItem Header="保存文件" />
+                    </MenuItem>
 
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="7*" />
-            </Grid.ColumnDefinitions>
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:IconImage Icon="FileExport"
+                                              Style="{StaticResource icon}" />
+                                <TextBlock Text="导出" />
+                            </StackPanel>
+                        </MenuItem.Header>
+                        <MenuItem Header="导出文件" />
+                        <MenuItem Header="导出png" />
+                    </MenuItem>
 
-            <!--#region inputArea -->
-            <Border Background="Aqua"
-                    Grid.Column="0">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:IconImage Icon="gear"
+                                              Style="{StaticResource icon}" />
+                                <TextBlock Text="设置" />
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:IconImage Icon="CircleExclamation"
+                                              Style="{StaticResource icon}" />
+                                <TextBlock Text="帮助" />
+                            </StackPanel>
+                        </MenuItem.Header>
+                        <MenuItem Header="关于"/>
+                    </MenuItem>
+                </Menu>
+            </Border>
+            <!--#endregion-->
+
+            <!--#region iconbuttonMenu -->
+            <Border  Grid.Row="1"
+                     BorderBrush="#1E4B7A"
+                     BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                    <fa:IconImage Icon="Forward"   Style="{StaticResource icon}" />
+                    <TextBlock FontSize="20"
+                               FontWeight="Bold">图象编辑栏：</TextBlock>
+                    <Button Style="{StaticResource iconButton}"
+                            Tag="magnifyingglassplus" />
+                    <Button Style="{StaticResource iconButton}"
+                            Tag="magnifyingglassminus" />
+                    <Button Style="{StaticResource iconButton}"
+                            Tag="scissors"/>
+                    <Button Style="{StaticResource iconButton}"
+                            Tag="copy" />
+                    <Button Style="{StaticResource iconButton}"
+                            Tag="sliders" />
+                    <Button Style="{StaticResource iconButton}"
+                            Tag="palette" />
+                </StackPanel>
+            </Border>
+            <!--#endregion-->
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="7*" />
+                </Grid.ColumnDefinitions>
+
+                <!--#region inputArea -->
                 <Border Background="WhiteSmoke"
                         Margin="20 30"
                         CornerRadius="20"
-                        BorderThickness="0">
+                        BorderThickness="0"
+                        Grid.Column="0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
-                            <RowDefinition Height="80" />
+                            <RowDefinition Height="50" />
                         </Grid.RowDefinitions>
                         <Border  Grid.Row="0"
-                                 Background="Red"
+                                 Background="LightGreen"
                                  CornerRadius="20 20 0 0">
-                            <TextBlock Text="hello"
-                                       FontSize="28"
+                            <TextBlock Text="数据输入"
+                                       FontSize="25"
                                        FontWeight="Bold"
                                        HorizontalAlignment="Center" />
                         </Border>
+                        
                         <Border Grid.Row="1"
                                 Background="WhiteSmoke"
-                                BorderThickness="0">
+                                BorderThickness="0,0,0,1"
+                                BorderBrush="Gray">
                             <TextBox Text="input ur content"
                                      Background="Transparent"
-                                     FontSize="30"
-                                     Foreground="Gray"
-                                     BorderThickness="0" />
+                                     FontSize="20"
+                                     Foreground="Black"
+                                     BorderThickness="0"
+                                     TextWrapping="Wrap"
+                                     VerticalScrollBarVisibility="Auto" />
                         </Border>
 
-                        <Border Grid.Row="2"
-                                Margin="20"
-                                CornerRadius="12"
-                                Background="Gray">
-                            <Button Background="Transparent"
-                                    Content="Start"
-                                    FontWeight="Bold"
-                                    FontSize="25"
-                                    BorderThickness="0"/>
-                        </Border>
+                        <Button Grid.Row="2"
+                                Style="{StaticResource RoundedButton}"
+                                BorderThickness="0">绘制
+                        </Button>
+
                     </Grid>
                 </Border>
+                <!--#endregion-->
+
+                <!--#region graphArea -->
+                <Grid Background="Gray"
+                      Grid.Column="1" />
+                <!--#endregion-->
+            </Grid>
+
+            <!--#region status-->
+            <Border Grid.Row="3"
+                    Background="Transparent"
+                    Margin="0,5"
+                    CornerRadius="20">
+                <TextBlock Text="当前状态: Running"
+                           Background="White"
+                           FontSize="16"
+                           Padding="25,0"
+                           Foreground="Black"
+                           TextWrapping="Wrap" />
             </Border>
             <!--#endregion-->
 
-            <!--#region graphArea -->
-            <Grid Background="Gray"
-                  Grid.Column="1" />
-            <!--#endregion-->
         </Grid>
-    </Grid>
+    </Border>
 </Window>
