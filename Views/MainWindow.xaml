@@ -48,7 +48,7 @@
                                 <TextBlock Text="文件" />
                             </StackPanel>
                         </MenuItem.Header>
-                        <MenuItem Header="新建文件"  />
+                        <MenuItem Header="新建文件" />
                         <MenuItem Header="打开文件" />
                         <MenuItem Header="保存文件" />
                     </MenuItem>
@@ -83,7 +83,7 @@
                                 <TextBlock Text="帮助" />
                             </StackPanel>
                         </MenuItem.Header>
-                        <MenuItem Header="关于"/>
+                        <MenuItem Header="关于" />
                     </MenuItem>
                 </Menu>
             </Border>
@@ -95,7 +95,8 @@
                      BorderThickness="0,0,0,1">
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center">
-                    <fa:IconImage Icon="Forward"   Style="{StaticResource icon}" />
+                    <fa:IconImage Icon="Forward"
+                                  Style="{StaticResource icon}" />
                     <TextBlock FontSize="20"
                                FontWeight="Bold">图象编辑栏：</TextBlock>
                     <Button Style="{StaticResource iconButton}"
@@ -103,7 +104,7 @@
                     <Button Style="{StaticResource iconButton}"
                             Tag="magnifyingglassminus" />
                     <Button Style="{StaticResource iconButton}"
-                            Tag="scissors"/>
+                            Tag="scissors" />
                     <Button Style="{StaticResource iconButton}"
                             Tag="copy" />
                     <Button Style="{StaticResource iconButton}"
@@ -121,46 +122,56 @@
                 </Grid.ColumnDefinitions>
 
                 <!--#region inputArea -->
-                <Border Background="WhiteSmoke"
-                        Margin="20 30"
-                        CornerRadius="20"
-                        BorderThickness="0"
-                        Grid.Column="0">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="50" />
-                        </Grid.RowDefinitions>
-                        <Border  Grid.Row="0"
-                                 Background="LightGreen"
-                                 CornerRadius="20 20 0 0">
-                            <TextBlock Text="数据输入"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       HorizontalAlignment="Center" />
-                        </Border>
-                        
-                        <Border Grid.Row="1"
-                                Background="WhiteSmoke"
-                                BorderThickness="0,0,0,1"
-                                BorderBrush="Gray">
-                            <TextBox Text="input ur content"
-                                     Background="Transparent"
-                                     FontSize="20"
-                                     Foreground="Black"
-                                     BorderThickness="0"
-                                     TextWrapping="Wrap"
-                                     VerticalScrollBarVisibility="Auto" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.85*" />
+                        <RowDefinition Height="0.15*" />
+                    </Grid.RowDefinitions>
+
+                    <Border x:Name="inputCard"
+                            Background="WhiteSmoke"
+                            Margin="20 30"
+                            CornerRadius="20"
+                            BorderThickness="0"
+                            Grid.Column="0">
+
+                        <Border Background="LightGreen"
+                                CornerRadius="20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="数据输入"
+                                           FontSize="25"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center" />
+                                <Border Grid.Row="1"
+                                        CornerRadius="0 0 20 20"
+                                        Background="WhiteSmoke">
+                                    <TextBox Text="input ur content"
+                                             Background="Transparent"
+                                             FontSize="20"
+                                             Foreground="Gray"
+                                             BorderThickness="0"
+                                             TextWrapping="Wrap"
+                                             VerticalScrollBarVisibility="Auto" />
+                                </Border>
+                            </Grid>
                         </Border>
 
-                        <Button Grid.Row="2"
-                                Style="{StaticResource RoundedButton}"
-                                BorderThickness="0">绘制
-                        </Button>
 
-                    </Grid>
-                </Border>
+                    </Border>
+                    <Button Grid.Row="1"
+                            Style="{StaticResource RoundedButton}"
+                            VerticalAlignment="Top"
+                            BorderThickness="0"
+                            Content="绘制"
+                            Height="40"
+                            Margin="50 0 50 10">
+                    </Button>
+                </Grid>
                 <!--#endregion-->
 
                 <!--#region graphArea -->
@@ -171,15 +182,14 @@
 
             <!--#region status-->
             <Border Grid.Row="3"
-                    Background="Transparent"
-                    Margin="0,5"
-                    CornerRadius="20">
+                    Background="WhiteSmoke">
                 <TextBlock Text="当前状态: Running"
                            Background="White"
                            FontSize="16"
-                           Padding="25,0"
                            Foreground="Black"
-                           TextWrapping="Wrap" />
+                           TextWrapping="Wrap"
+                           Margin="10 0 0 0"
+                           VerticalAlignment="Center" />
             </Border>
             <!--#endregion-->
 
